@@ -1,1 +1,3 @@
 ACTION=="add", ATTRS{idVendor}=="1b1f", ATTRS{idProduct}=="c020", RUN+="/sbin/modprobe cp210x" RUN+="/bin/sh -c 'echo 1b1f c020 >/sys/bus/usb-serial/drivers/cp210x/new_id'"
+ACTION=="add", ATTR{product}=="HmUL*", ATTRS{idVendor}=="0403", RUN+="/sbin/modprobe hb_rf_usb" RUN+="/bin/sh -c 'echo 0403 $attr{idProduct} > /sys/bus/usb/drivers/hb_rf_usb/new_id'"
+ACTION=="add", ATTR{product}=="FT232R*", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", RUN+="/sbin/modprobe hb_rf_usb" RUN+="/bin/sh -c 'echo 0403 6001 > /sys/bus/usb/drivers/hb_rf_usb/new_id'"

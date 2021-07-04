@@ -32,10 +32,10 @@
 -  set result [catch {exec echo "nomatch" >> /tmp/test} msg]
 -  jsonrpc_response false
 -}
-+set result [catch {exec curl -s https://raspberrymatic.de/LATEST-VERSION.js} verstring]
++set result [catch {exec curl -s https://busmatic.de/LATEST-VERSION.js} verstring]
 +set result [regexp {homematic\.com\.setLatestVersion\('(.+)', 'HM-RASPBERRYMATIC'\);} $verstring match latest ]
 +set result [catch {exec grep PLATFORM /VERSION | cut -d= -f2} platform]
-+set url "https://github.com/jens-maus/RaspberryMatic/releases/download/$latest/RaspberryMatic-$latest-$platform.zip"
++set url "https://busmatic.de/releases/BusMatic-$latest-$platform.zip"
  
 -set result [catch {exec wget -q --https-only -O /tmp/fup.tgz $url} error]
 +set result [catch {exec wget -q --https-only -O /usr/local/tmp/firmwareUpdateFile $url} error]
@@ -66,7 +66,7 @@
                        table_data {
                          division {class="CLASS20908" style="display: none"} {id="btnFwDownload"} {} "onClick=\"window.location.href='$REMOTE_FIRMWARE_SCRIPT?cmd=download&version=$cur_version&serial=$serial&lang=de&product=HM-CCU[getProduct]';\"" {}
 -                        division {class="CLASS20908"}  "onClick=\"showCCULicense(false);\"" {puts "\${dialogSettingsCMBtnPerformSoftwareUpdateDownload}"}
-+                        division {class="CLASS20908"}  "onClick=\"window.open('https://github.com/jens-maus/RaspberryMatic/releases/latest','_blank');\"" {puts "\${dialogSettingsCMBtnPerformSoftwareUpdateDownload}"}
++                        division {class="CLASS20908"}  "onClick=\"window.open('https://busmatic.de/releases/','_blank');\"" {puts "\${dialogSettingsCMBtnPerformSoftwareUpdateDownload}"}
                        }
                      }
                    }
@@ -726,9 +726,9 @@
 -    "CCUFullNameHeader" : "Homematic CCU",
 -    "CCUFullNameText" : "Homematic CCU",
 -    "CCUShortName" : "CCU",
-+    "CCUFullNameHeader" : "RaspberryMatic",
-+    "CCUFullNameText" : "RaspberryMatic",
-+    "CCUShortName" : "RaspMatic",
++    "CCUFullNameHeader" : "Busmatic",
++    "CCUFullNameText" : "Busmatic",
++    "CCUShortName" : "Busmatic",
      "BidCosRF" : "Homematic Funk",
      "BidCosWired" : "Homematic Wired",
      "VirtualDevices" : "VirtualDevices",
@@ -779,9 +779,9 @@
 -    "CCUFullNameHeader" : "Homematic CCU",
 -    "CCUFullNameText" : "Homematic CCU",
 -    "CCUShortName" : "CCU",
-+    "CCUFullNameHeader" : "RaspberryMatic",
-+    "CCUFullNameText" : "RaspberryMatic",
-+    "CCUShortName" : "RaspMatic",
++    "CCUFullNameHeader" : "Busmatic",
++    "CCUFullNameText" : "Busmatic",
++    "CCUShortName" : "Busmatic",
      "BidCosRF" : "Homematic RF",
      "BidCosWired" : "BidCos-Wired",
      "HmIPRF" : "HmIP-RF",
@@ -840,7 +840,7 @@
      script.id = "homematic_com_script";
      script.type = "text/javascript";
 -    script.src = this.m_URLServer + "/firmware/download?cmd=js_check_version&version="+WEBUI_VERSION+"&product="+this.m_product+"&serial=" + serial;
-+    script.src = "https://raspberrymatic.de/LATEST-VERSION.js?v=" + WEBUI_VERSION + "&p=" + PRODUCT;
++    script.src = "https://busmatic.de/LATEST-VERSION.js?v=" + WEBUI_VERSION + "&p=" + PRODUCT;
      $("body").appendChild(script);
    },
  

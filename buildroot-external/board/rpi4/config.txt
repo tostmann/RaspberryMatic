@@ -54,7 +54,8 @@ dtparam=pwr_led_trigger=timer,act_led_trigger=mmc0
 
 # special device tree options for Compute Module 4
 [cm4]
-dtoverlay=dwc2
+dtoverlay=dwc2,dr_mode=host
+dtoverlay=gpio-fan,gpiopin=24,temp=55000
 dtparam=i2c_vc=on
 dtoverlay=i2c-rtc,pcf85063a,i2c_csi_dsi
 

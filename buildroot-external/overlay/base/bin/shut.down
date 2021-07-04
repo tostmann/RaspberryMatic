@@ -1,0 +1,15 @@
+#!/bin/sh
+# this is the GPIO pin receiving the shut-down signal
+GPIOpin1=4
+echo "$GPIOpin1" > /sys/class/gpio/export
+echo "in" > /sys/class/gpio/gpio$GPIOpin1/direction
+echo "1" > /sys/class/gpio/gpio$GPIOpin1/value
+while true; do
+  sleep 1
+  power=$(cat /sys/class/gpio/gpio$GPIOpin1/value)
+  if [ $power == 0 ]; then
+    sleep 1
+    /sbin/poweroff
+  fi
+done
+
