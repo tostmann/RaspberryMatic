@@ -1,0 +1,5 @@
+config BR2_PACKAGE_FT232R_PROG
+	bool "Linux FT232R Projects and Stuff"
+	select BR2_PACKAGE_LIBFTDI
+	help
+	  taken from http://rtr.ca/ft232r/
